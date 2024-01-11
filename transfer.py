@@ -4,6 +4,7 @@ import shutil
 
 
 def transferFiles(directories):
+    print("[ ] Beginning file transfer process")
     for file in os.scandir(settings.ROOT_DIR):
         subdirFound = False
         for dir, ext in directories:

@@ -1,8 +1,4 @@
-import tkinter as tk
-from configparser import ConfigParser
-from tkinter import ttk, filedialog
 import os
-
 import settings
 from transfer import transferFiles
 
@@ -12,15 +8,15 @@ def __getSubdirectories():
     for subdir in settings.TARGET_SUBDIRS:
         subdirectories.append(
             (os.path.join(settings.TARGET_DIR, subdir[0]), subdir[1]))
-    # add target directory for moving all other file extensions
-    # subdirectories.append((settings.TARGET_DIR, None))
     return subdirectories
 
 
 def __createSubdirs(directories):
+    print("[ ] Verifying subdirectories' existences...")
     for subdir in directories:
         try:
             if not os.path.lexists(subdir[0]):
+                print(f"[ ] Making directory for '{subdir[0]}'")
                 os.mkdir(subdir[0])
         except PermissionError as e:
             print(f"Subdirectory '{subdir[0]}' couldn't be created.")
@@ -30,16 +26,13 @@ def __createSubdirs(directories):
 
 
 def main():
-    print("Would you like to use the GUI? (y/n): ")
+    print(
+        f"[ ] Files are being moved from {settings.ROOT_DIR} to {settings.TARGET_DIR}")
     directories = __getSubdirectories()
     __createSubdirs(directories)
-    # if user wants to use GUI, then run App instance
-    # else run the program with default settings and parameters
     transferFiles(directories)
+    print("[✓] Process has completed without issue")
 
 
 if __name__ == "__main__":
     main()
-
-# app = App()
-# app()
