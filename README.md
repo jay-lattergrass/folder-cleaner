@@ -11,10 +11,12 @@ A Python script for moving and organizing files from a root directory to a new t
 
 ## Configuration
 
-1. Open `settings.py` to customize the following parameters:
-   - `ROOT_DIR`: The root directory from which files will be organized.
-   - `TARGET_DIR`: The targeted directory where organized files will be moved.
-   - Customize subdirectories and file extensions based on your preferences.
+Open `settings.py` to customize the following parameters:
+
+1. `ROOT_DIR`: The root directory from which files will be organized.
+2. `TARGET_DIR`: The targeted directory where organized files will be moved.
+3. `TARGET_SUBDIRS`: Subdirectories paired to their file extensions based on your preferences.
+4. File extensions are in the form of tuples and are paired to the target subdirectory.
 
 ## Usage
 
